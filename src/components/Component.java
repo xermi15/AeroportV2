@@ -38,8 +38,7 @@ public interface Component {
                     decimal = DADES.nextDouble();
                     DADES.nextLine();
                     return decimal;
-            }
-        
+        }
         return null;
     }
     
