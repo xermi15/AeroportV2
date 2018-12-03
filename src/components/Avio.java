@@ -129,16 +129,16 @@ public class Avio implements Component{
     public void modificarComponent() {
         
         System.out.println("\nEl codi de l'avió és: "+ codi);
-        codi = demanarDades("\nQuin és el nou Codi de l'avió?", 2);
+        codi = (String)demanarDades("\nQuin és el nou Codi de l'avió?", 2);
         
         System.out.println("\nEl fabricant de l'avió és: "+ fabricant);
-        fabricant = demanarDades("\nQuin és el nou fabricant de l'avió?", 3);
+        fabricant = (String)demanarDades("\nQuin és el nou fabricant de l'avió?", 3);
         
         System.out.println("\nEl model de l'avió és: "+ model);
-        model = demanarDades("\nQuin és el nou model de l'avió?", 3);
+        model = (String)demanarDades("\nQuin és el nou model de l'avió?", 3);
         
         System.out.println("\nLa capacitat de l'avió és: "+ capacitat);
-        capacitat = demanarDades("\nQuina és la nova capacitat de l'avió?", 1);
+        capacitat = (int)demanarDades("\nQuina és la nova capacitat de l'avió?", 1);
 
     }
 
