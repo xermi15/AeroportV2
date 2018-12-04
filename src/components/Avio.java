@@ -10,8 +10,7 @@ import java.util.Scanner;
  *
  * @author root
  */
-
-public class Avio implements Component{
+public class Avio {
 
     private final static Scanner DADES = new Scanner(System.in);
 
@@ -126,23 +125,25 @@ public class Avio implements Component{
      actual, abans de modificar-los
      Retorn: cap
      */
-    public void modificarComponent() {
+    public void modificarAvio() {
         
-        System.out.println("\nEl codi de l'avió és: "+ codi);
-        codi = demanarDades("\nQuin és el nou Codi de l'avió?", 2);
-        
+        System.out.println("\nEl codi de l'avió és: "+codi);
+        System.out.println("\nQuin és el nou Codi de l'avió?");
+        codi = DADES.next();
+        DADES.nextLine(); //Neteja de buffer
         System.out.println("\nEl fabricant de l'avió és: "+ fabricant);
-        fabricant = demanarDades("\nQuin és el nou fabricant de l'avió?", 3);
-        
-        System.out.println("\nEl model de l'avió és: "+ model);
-        model = demanarDades("\nQuin és el nou model de l'avió?", 3);
-        
-        System.out.println("\nLa capacitat de l'avió és: "+ capacitat);
-        capacitat = demanarDades("\nQuina és la nova capacitat de l'avió?", 1);
+        System.out.println("\nQuin és el nou fabricant de l'avió?");
+        fabricant = DADES.nextLine();
+        System.out.println("\nEl model de l'avió és: "+model);
+        System.out.println("\nQuin és el nou model de l'avió?");
+        model = DADES.nextLine();
+        System.out.println("\nLa capacitat de l'avió és: "+capacitat);
+        System.out.println("\nQuina és la nova capacitat de l'avió?");
+        capacitat = DADES.nextInt();
 
     }
 
-    public void mostrarComponent() {
+    public void mostrarAvio() {
         System.out.println("\nLes dades de l'avió amb codi " + codi + " són:");
         System.out.println("\nFabricant: " + fabricant);
         System.out.println("\nModel: " + model);
