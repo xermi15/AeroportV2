@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author root
  */
-public class TCP implements Tripulant  {
+public class TCP extends Tripulant {
 
     private final static Scanner DADES = new Scanner(System.in);
 
