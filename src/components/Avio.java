@@ -10,8 +10,7 @@ import java.util.Scanner;
  *
  * @author root
  */
-
-public class Avio implements Component{
+public class Avio {
 
     private final static Scanner DADES = new Scanner(System.in);
 
@@ -126,7 +125,7 @@ public class Avio implements Component{
      actual, abans de modificar-los
      Retorn: cap
      */
-    public void modificarComponent() {
+    public void modificarAvio() {
         
         System.out.println("\nEl codi de l'avió és: "+ codi);
         codi = (String)demanarDades("\nQuin és el nou Codi de l'avió?", 2);
@@ -142,7 +141,7 @@ public class Avio implements Component{
 
     }
 
-    public void mostrarComponent() {
+    public void mostrarAvio() {
         System.out.println("\nLes dades de l'avió amb codi " + codi + " són:");
         System.out.println("\nFabricant: " + fabricant);
         System.out.println("\nModel: " + model);

@@ -32,12 +32,12 @@ public interface Component {
                     DADES.nextLine();
                     return token;
                 case 3:
-                    cadena = DADES.nextLine();
-                    return cadena;
-                case 4:
                     decimal = DADES.nextDouble();
                     DADES.nextLine();
                     return decimal;
+                case 4:
+                    cadena = DADES.nextLine();
+                    return cadena;
         }
         return null;
     }
