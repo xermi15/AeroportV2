@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author root
  */
-public class Classe {
+public class Classe implements Component {
     
     private final static Scanner DADES= new Scanner(System.in);
     
@@ -79,18 +79,15 @@ public class Classe {
      actual, abans de modificar-los
      Retorn: cap
      */
-    public void modificarClasse() {
+    public void modificarComponent() {
 
         System.out.println("\nNom de la classe: " + nom);
-        System.out.println("\nEntra el nou nom:");
-        nom = DADES.nextLine();
-        System.out.println("\nCapacitat de la classe: " + nom);
-        System.out.println("\nEntra la nova capacitat:");
-        capacitat = DADES.nextInt();
+        nom = (String)demanarDades("\nEntra el nou nom:",2);
+        System.out.println("\nCapacitat de la classe: " + nom);         
+        capacitat = (int)demanarDades("\nEntra la nova capacitat:",1);DADES.nextInt();
     }
 
-    public void mostrarClasse() {
+    public void mostrarComponent() {
         System.out.println("\nLa classe " + nom + " té una capacitat de "+capacitat);
     }
-    
 }

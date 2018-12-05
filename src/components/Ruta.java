@@ -54,18 +54,14 @@ public abstract class Ruta implements Component {
     
     public void modificarComponent(){
     System.out.println("\nEl codi de la ruta és:" + codi);
-        System.out.println("\nQuin és el nou codi de la ruta?");
-        codi = DADES.next();
+        codi = (String)demanarDades("\nQuin és el nou codi de la ruta?",2);
         DADES.nextLine(); //Neteja de buffer
         System.out.println("\nL'aeroport d'origen de la ruta nacional és:" + aeroportOri);
-        System.out.println("\nQuin és el nou l'aeroport d'origen de la ruta?");
-        aeroportOri = DADES.nextLine();
+        aeroportOri = (String)demanarDades("\nQuin és el nou l'aeroport d'origen de la ruta?",4);
         System.out.println("\nL'aeroport de destí de la ruta nacional és:" + aeroportDes);
-        System.out.println("\nQuin és el nou l'aeroport de destí de la ruta?");
-        aeroportDes = DADES.nextLine();
+        aeroportDes = (String)demanarDades("\nQuin és el nou l'aeroport de destí de la ruta?",4);
         System.out.println("\nLa distància de la ruta és:" + distancia);
-        System.out.println("\nQuina és la nova distància de la ruta?");
-        distancia = DADES.nextDouble();
+        distancia = (double)demanarDades("\nQuina és la nova distància de la ruta?",4);
     }
     
     public void mostrarComponent(){
