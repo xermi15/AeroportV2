@@ -6,6 +6,7 @@
 package principal;
 
 import components.Avio;
+import components.Component;
 import components.RutaIntercontinental;
 import components.RutaInternacional;
 import components.RutaNacional;
@@ -19,7 +20,8 @@ import java.util.Scanner;
  *
  * @author root
  */
-public class Companyia {
+
+public class Companyia implements Component {
 
     private final static Scanner DADES = new Scanner(System.in);
 

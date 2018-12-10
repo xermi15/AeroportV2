@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class TCP extends Tripulant {
 
     private final static Scanner DADES = new Scanner(System.in);
+    private String rang;
 
     /*
      CONSTRUCTOR
@@ -23,10 +24,22 @@ public class TCP extends Tripulant {
      - Inicialitzar l'atribut dataAlta amb l'hora actual del sistema.
      - Inicialitzar l'atribut rang a null, ja que quan es crea un TCP, mai té rang.
      */
-    public TCP(String passaport, String nom, int edat, int horesVol, String rang) {
-        super(passaport, nom, edat, horesVol, rang);
+    public TCP(String passaport, String nom, int edat, int horesVol) {
+        super(passaport, nom, edat, horesVol);
+        this.rang = null;
+    }
+    
+    /*
+    Mètodes accessors
+     */
+    public String getRang() {
+        return rang;
     }
 
+    public void setRang(String rang) {
+        this.rang = rang;
+    }
+    
     /*
     Paràmetres: cap
     Accions:
@@ -52,7 +65,7 @@ public class TCP extends Tripulant {
         System.out.println("\nHores de vol del tripulant:");
         hores = DADES.nextInt();
 
-        return new TCP(passaport, nom, edat, hores, null);
+        return new TCP(passaport, nom, edat, hores);
     }
 
     /*
@@ -73,5 +86,6 @@ public class TCP extends Tripulant {
 
     public void mostrarTCP() {
         mostrarComponent();
+        System.out.println("\nRang: " + rang);
     }
 }
