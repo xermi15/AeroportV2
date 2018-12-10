@@ -101,11 +101,9 @@ public class RutaInternacional extends Ruta {
 
         modificarComponent();
         System.out.println("\nEl país d'origen de la ruta és:" + paisOri);
-        System.out.println("\nQuin és el nou país d'origen de la ruta:");
-        setPaisOri(DADES.nextLine());
+        paisOri = (String)demanarDades("\nQuin és el nou país d'origen de la ruta:",4);
         System.out.println("\nEl país de destí de la ruta és:" + paisDes);
-        System.out.println("\nQuin és el nou país de destí de la ruta?");
-        setPaisDes(DADES.nextLine()); 
+        paisDes = (String)demanarDades("\nQuin és el nou país de destí de la ruta?",4);
     }
 
     public void mostrarRutaInternacional() {
