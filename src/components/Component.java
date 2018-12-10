@@ -22,7 +22,6 @@ public interface Component {
         System.out.println(peticio);
         
         switch (tipus) {
-            
                 case 1:
                     enter = DADES.nextInt();
                     DADES.nextLine();
