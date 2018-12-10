@@ -107,11 +107,10 @@ public class RutaIntercontinental extends RutaInternacional{
         modificarRutaInternacional();
 
         System.out.println("\nEl continent d'origen de la ruta és:"+continentOri);
-        System.out.println("\nQuin és el nou continent d'origen de la ruta?");
-        setContinentOri(DADES.nextLine());
+        continentOri = (String)demanarDades("\nQuin és el nou continent d'origen de la ruta?",4);
         System.out.println("\nEl continent de destí de la ruta és:"+continentDes);
-        System.out.println("\nQuin és el nou continent de destí de la ruta?");
-        setContinentDes(DADES.nextLine());
+        continentDes = (String)demanarDades("\nQuin és el nou continent de destí de la ruta?",4);
+        
 
     }
 
