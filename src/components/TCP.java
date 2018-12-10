@@ -4,7 +4,6 @@
  */
 package components;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -16,13 +15,6 @@ public class TCP extends Tripulant {
 
     private final static Scanner DADES = new Scanner(System.in);
 
-    private String passaport;
-    private String nom;
-    private int edat;
-    private Date dataAlta;
-    private int horesVol;
-    private String rang;
-
     /*
      CONSTRUCTOR
      Paràmetres: valors per tots els atributs de la classe menys dataAlta rang.
@@ -31,67 +23,9 @@ public class TCP extends Tripulant {
      - Inicialitzar l'atribut dataAlta amb l'hora actual del sistema.
      - Inicialitzar l'atribut rang a null, ja que quan es crea un TCP, mai té rang.
      */
-    public TCP(String passaport, String nom, int edat, int horesVol) {
-        this.passaport = passaport;
-        this.nom = nom;
-        this.edat = edat;
-        dataAlta = new Date();
-        this.horesVol = horesVol;
-        this.rang = null;
+    public TCP(String passaport, String nom, int edat, int horesVol, String rang) {
+        super(passaport, nom, edat, horesVol, rang);
     }
-
-
-    /*
-    Mètodes accessors
-     */
-    public String getPassaport() {
-        return passaport;
-    }
-
-    public void setPassaport(String passaport) {
-        this.passaport = passaport;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getEdat() {
-        return edat;
-    }
-
-    public void setEdat(int edat) {
-        this.edat = edat;
-    }
-
-    public Date getDataAlta() {
-        return dataAlta;
-    }
-
-    public void setDataAlta(Date dataAlta) {
-        this.dataAlta = dataAlta;
-    }
-
-    public int getHoresVol() {
-        return horesVol;
-    }
-
-    public void setHoresVol(int horesVol) {
-        this.horesVol = horesVol;
-    }
-
-    public String getRang() {
-        return rang;
-    }
-
-    public void setRang(String rang) {
-        this.rang = rang;
-    }
-
 
     /*
     Paràmetres: cap
@@ -115,11 +49,10 @@ public class TCP extends Tripulant {
         nom = DADES.nextLine();
         System.out.println("\nEdat del tripulant:");
         edat = DADES.nextInt();
-
         System.out.println("\nHores de vol del tripulant:");
         hores = DADES.nextInt();
 
-        return new TCP(passaport, nom, edat, hores);
+        return new TCP(passaport, nom, edat, hores, null);
     }
 
     /*
