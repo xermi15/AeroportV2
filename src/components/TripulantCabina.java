@@ -115,8 +115,7 @@ public class TripulantCabina extends Tripulant {
         modificarComponent();
 
         System.out.println("\nEl rang actual del tripulant és:" + rang);
-        System.out.println("\nQuin és el nou rang del tripulant?: C-Comandant, CP-Copilot, EV-Enginyer de vol");
-        assignarBarres(DADES.next());
+        assignarBarres((String)demanarDades("\nQuin és el nou rang del tripulant?: C-Comandant, CP-Copilot, EV-Enginyer de vol",2));
 
     }
 

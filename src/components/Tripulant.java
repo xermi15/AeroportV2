@@ -31,7 +31,7 @@ public abstract class Tripulant implements Component {
         this.edat = edat;
         dataAlta = new Date();
         this.horesVol = horesVol;
-        this.rang = rang;
+        this.rang = null;
     }
     
     public String getPassaport() {
