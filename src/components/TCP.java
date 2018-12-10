@@ -135,31 +135,10 @@ public class TCP extends Tripulant {
      Retorn: cap
      */
     public void modificarTCP() {
-        int hores, minuts;
-
-        System.out.println("\nEl passaport actual del tripulant és:" + passaport);
-        System.out.println("\nQuin és el nou passaport del tripulant?");
-        passaport = DADES.next();
-        DADES.nextLine(); //Neteja de buffer
-        System.out.println("\nEl nom actual del tripulant és:" + nom);
-        System.out.println("\nQuin és el nou nom del tripulant?");
-        nom = DADES.nextLine();
-        System.out.println("\nL'edat actual del tripulant és:" + edat);
-        System.out.println("\nQuina és la nova edat del tripulant?");
-        edat = DADES.nextInt();
-
-        System.out.println("Les hores de vol actuals del tripulant són:" + horesVol);
-        System.out.println("\nQuines són les hores de vol actuals del tripulant:");
-        horesVol = DADES.nextInt();
+        modificarComponent();
     }
 
     public void mostrarTCP() {
-        System.out.println("\nLes dades del tripulant de cabina amb passaport " + passaport + " són:");
-        System.out.println("\nNom: " + nom);
-        System.out.println("\nEdat: " + edat);
-        System.out.println("\nData d'alta: " + new SimpleDateFormat("dd-MM-yyyy").format(dataAlta));
-        System.out.println("\nHores de vol: " + horesVol);
-        System.out.println("\nRang: " + rang);
+        mostrarComponent();
     }
-
 }
