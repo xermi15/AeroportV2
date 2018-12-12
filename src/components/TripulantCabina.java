@@ -30,7 +30,7 @@ public class TripulantCabina extends Tripulant {
      - Inicialitzar l'atribut barres mitjançant el mètode pertinent d'aquesta classe.
      */
     public TripulantCabina(String passaport, String nom, int edat, int horesVol, String rang) {
-        super(passaport,nom,edat,horesVol, rang);
+        super(passaport,nom,edat,horesVol);
         assignarBarres(rang);
     }
 

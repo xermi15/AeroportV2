@@ -25,15 +25,17 @@ public abstract class Tripulant implements Component {
     private int horesVol;
     private String rang;
     
-    public Tripulant(String passaport, String nom, int edat, int horesVol, String rang) {
+    public Tripulant(String passaport, String nom, int edat, int horesVol) {
         this.passaport = passaport;
         this.nom = nom;
         this.edat = edat;
         dataAlta = new Date();
         this.horesVol = horesVol;
-        this.rang = null;
     }
     
+    /*
+    Mètodes accessors
+     */
     public String getPassaport() {
         return passaport;
     }
@@ -73,15 +75,6 @@ public abstract class Tripulant implements Component {
     public void setHoresVol(int horesVol) {
         this.horesVol = horesVol;
     }
-
-    public String getRang() {
-        return rang;
-    }
-
-    public void setRang(String rang) {
-        this.rang = rang;
-    }
-    
     
     public void mostrarComponent() {
         System.out.println("\nLes dades del tripulant de cabina amb passaport " + passaport + " són:");
@@ -89,7 +82,6 @@ public abstract class Tripulant implements Component {
         System.out.println("\nEdat: " + edat);
         System.out.println("\nData d'alta: " + new SimpleDateFormat("dd-MM-yyyy").format(dataAlta));
         System.out.println("\nHores de vol: " + horesVol);
-        System.out.println("\nRang: " + rang);
     }
     
     public void modificarComponent() {

@@ -6,6 +6,7 @@
 package principal;
 
 import components.Avio;
+import components.Component;
 import components.RutaIntercontinental;
 import components.RutaInternacional;
 import components.RutaNacional;
@@ -19,29 +20,33 @@ import java.util.Scanner;
  *
  * @author root
  */
-public class Companyia {
+
+public class Companyia implements Component {
 
     private final static Scanner DADES = new Scanner(System.in);
 
     private int codi;
     private static int properCodi = 1; //El proper codi a assignar
-    private String nom;
-    private Avio[] avions;
-    private int posicioAvions; //Possició actual buida del vector avions
-    private RutaNacional[] rutesNacionals;
-    private int posicioRutesNacionals; //Possició actual buida del vector rutesNacionals
-    private RutaInternacional[] rutesInternacionals;
-    private int posicioRutesInternacionals; //Possició actual buida del vector rutesInternacionals
-    private RutaIntercontinental[] rutesIntercontinentals;
-    private int posicioRutesIntercontinentals; //Possició actual buida del vector rutesIntercontinentals
-    private RutaTransoceanica[] rutesTransoceaniques;
-    private int posicioRutesTransoceaniques; //Possició actual buida del vector rutesTransoceaniques
-    private TripulantCabina[] tripulantsCabina;
-    private int posicioTripulantsCabina; //Possició actual buida del vector tripulantsCabina
-    private TCP[] tcps;
-    private int posicioTcps; //Possició actual buida del vector tcps
-    private Vol[] vols;
-    private int posicioVols; //Possició actual buida del vector vols
+//    private String nom;
+//    private Avio[] avions;
+//    private int posicioAvions; //Possició actual buida del vector avions
+//    private RutaNacional[] rutesNacionals;
+//    private int posicioRutesNacionals; //Possició actual buida del vector rutesNacionals
+//    private RutaInternacional[] rutesInternacionals;
+//    private int posicioRutesInternacionals; //Possició actual buida del vector rutesInternacionals
+//    private RutaIntercontinental[] rutesIntercontinentals;
+//    private int posicioRutesIntercontinentals; //Possició actual buida del vector rutesIntercontinentals
+//    private RutaTransoceanica[] rutesTransoceaniques;
+//    private int posicioRutesTransoceaniques; //Possició actual buida del vector rutesTransoceaniques
+//    private TripulantCabina[] tripulantsCabina;
+//    private int posicioTripulantsCabina; //Possició actual buida del vector tripulantsCabina
+//    private TCP[] tcps;
+//    private int posicioTcps; //Possició actual buida del vector tcps
+//    private Vol[] vols;
+//    private int posicioVols; //Possició actual buida del vector vols
+    
+    private Component[] components;
+    private int posicioComponents;
 
     /*
      CONSTRUCTOR
@@ -66,22 +71,25 @@ public class Companyia {
         codi = properCodi;
         properCodi++;
         this.nom = nom;
-        avions = new Avio[200];
-        posicioAvions = 0;
-        rutesNacionals = new RutaNacional[100];
-        posicioRutesNacionals = 0;
-        rutesInternacionals = new RutaInternacional[200];
-        posicioRutesInternacionals = 0;
-        rutesIntercontinentals = new RutaIntercontinental[100];
-        posicioRutesIntercontinentals = 0;
-        rutesTransoceaniques = new RutaTransoceanica[45];
-        posicioRutesTransoceaniques = 0;
-        tripulantsCabina = new TripulantCabina[600];
-        posicioTripulantsCabina = 0;
-        tcps = new TCP[1000];
-        posicioTcps = 0;
-        vols = new Vol[700];
-        posicioVols = 0;
+//        avions = new Avio[200];
+//        posicioAvions = 0;
+//        rutesNacionals = new RutaNacional[100];
+//        posicioRutesNacionals = 0;
+//        rutesInternacionals = new RutaInternacional[200];
+//        posicioRutesInternacionals = 0;
+//        rutesIntercontinentals = new RutaIntercontinental[100];
+//        posicioRutesIntercontinentals = 0;
+//        rutesTransoceaniques = new RutaTransoceanica[45];
+//        posicioRutesTransoceaniques = 0;
+//        tripulantsCabina = new TripulantCabina[600];
+//        posicioTripulantsCabina = 0;
+//        tcps = new TCP[1000];
+//        posicioTcps = 0;
+//        vols = new Vol[700];
+//        posicioVols = 0;
+        
+        components = new Component[2945];
+        posicioComponents = 0;
     }
 
     /*
@@ -102,7 +110,16 @@ public class Companyia {
     public static void setProperCodi() {
         properCodi++;
     }
+    
+    public int getPosicioComponents(){
+        return posicioComponents;
+    }
+    
+    public void setPosicioComponents(int pos){
+        this.posicioComponents = pos;
+    }
 
+    /*
     public String getNom() {
         return nom;
     }
@@ -238,7 +255,65 @@ public class Companyia {
     public void setPosicioVols(int posicioVols) {
         this.posicioVols = posicioVols;
     }
-
+    */
+    
+    
+    public int seleccionarComponent(int tipus, String id){
+        int pos = -1;
+        boolean trobat = false;
+        switch (tipus) {
+            case 1:
+                while(id == null){
+                    id = (String)demanarDades("\nCodi de l'avió?:", 2);
+                }
+                for (int i = 0; i < posicioComponents && !trobat; i++) {
+                    if (components[i].getCodi().equals(id)) {
+                        pos = i;
+                        trobat = true;
+                    }
+                }
+                
+                //verificar amb instanceof
+                
+            case 2:
+                while(id == null){
+                    id = (String)demanarDades("\nCodi de la ruta?:", 2);
+                }
+                for (int i = 0; i < posicioComponents && !trobat; i++) {
+                    if (components[i].getCodi().equals(id)) {
+                        pos = i;
+                        trobat = true;
+                    }
+                }
+                
+                //verificar amb instanceof
+            case 3:
+                while(id == null){
+                    id = (String)demanarDades("\nPassaport del tripulant?:", 2);
+                }
+                for (int i = 0; i < posicioComponents && !trobat; i++) {
+                    if (components[i].getCodi().equals(id)) {
+                        pos = i;
+                        trobat = true;
+                    }
+                }
+                
+                //verificar amb instanceof
+            case 4:
+                while(id == null){
+                    id = (String)demanarDades("\nCodi del vol?:", 2);
+                }
+                for (int i = 0; i < posicioComponents && !trobat; i++) {
+                    if (components[i].getCodi().equals(id)) {
+                        pos = i;
+                        trobat = true;
+                    }
+                }
+                
+                //verificar amb instanceof
+        }
+        return pos;
+    }
 
     /*
      Paràmetres: cap
@@ -267,15 +342,12 @@ public class Companyia {
      actual, abans de modificar-lo.
      Retorn: cap
      */
-    public void modificarCompanyia() {
-
+    public void modificarComponent() {
         System.out.println("\nNom de la companyia: " + nom);
-        System.out.println("\nQuin és el nou nom de la companyia?");
-        nom = DADES.nextLine();
-
+        nom = (String)demanarDades("\nQuin és el nou nom de la companyia?", 2);
     }
 
-    public void mostrarCompanyia() {
+    public void mostrarComponent() {
         System.out.println("\nLes dades de la companyia amb codi " + codi + " són:");
         System.out.println("\nNom:" + nom);
     }
@@ -308,7 +380,6 @@ public class Companyia {
                 trobat = true;
             }
         }
-
         return pos;
     }
 
