@@ -17,28 +17,29 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Scanner;
+import components.Component;
+import components.Tripulant;
 
 /**
  *
  * @author root
  */
-public class Vol {
+public class Vol implements Component{
 
     private final static Scanner DADES = new Scanner(System.in);
 
     private String codi;
     private Object ruta;
-    private int tipusRuta;
+    //private int tipusRuta;
     private Avio avio;
-    private TripulantCabina[] tripulacioCabina;
-    private int posicioTripulacioCabina;
-    private TCP[] tcps;
-    private int posicioTcps;
+    private Tripulant[] tripulacio;
+    private int posicioTripulacio;
     private Date dataSortida;
     private Date dataArribada;
     private LocalTime horaSortida;
     private LocalTime horaArribada;
     private String durada;
+    private TCP capTCP;
 
     /*
      CONSTRUCTOR
@@ -59,15 +60,14 @@ public class Vol {
         this.codi = codi;
         ruta = null;
         avio = null;
-        tipusRuta = 0;
+        //tipusRuta = 0;
         this.dataSortida = dataSortida;
         this.dataArribada = dataArribada;
         this.horaSortida = horaSortida;
         this.horaArribada = horaArribada;
-        tripulacioCabina = new TripulantCabina[7];
-        posicioTripulacioCabina = 0;
-        tcps = new TCP[25];
-        posicioTcps = 0;
+        tripulacio = new Tripulant[32];
+        posicioTripulacio = 0;
+        capTCP = null;
         calcularDurada();
     }
 
@@ -90,13 +90,13 @@ public class Vol {
         this.ruta = ruta;
     }
 
-    public int getTipusRuta() {
+    /*public int getTipusRuta() {
         return tipusRuta;
     }
 
     public void setTipusRuta(int tipusRuta) {
         this.tipusRuta = tipusRuta;
-    }
+    }*/
 
     public Avio getAvio() {
         return avio;
@@ -106,36 +106,20 @@ public class Vol {
         this.avio = avio;
     }
 
-    public TripulantCabina[] getTripulacioCabina() {
-        return tripulacioCabina;
+    public Tripulant[] getTripulacio() {
+        return tripulacio;
     }
 
-    public void setTripulacioCabina(TripulantCabina[] tripulacioCabina) {
-        this.tripulacioCabina = tripulacioCabina;
+    public void setTripulacio(Tripulant[] tripulacio) {
+        this.tripulacio = tripulacio;
     }
 
-    public int getPosicioTripulacioCabina() {
-        return posicioTripulacioCabina;
+    public int getPosicioTripulacio() {
+        return posicioTripulacio;
     }
 
-    public void setPosicioTripulacioCabina(int posicioTripulacioCabina) {
-        this.posicioTripulacioCabina = posicioTripulacioCabina;
-    }
-
-    public TCP[] getTcps() {
-        return tcps;
-    }
-
-    public void setTcps(TCP[] tcps) {
-        this.tcps = tcps;
-    }
-
-    public int getPosicioTcps() {
-        return posicioTcps;
-    }
-
-    public void setPosicioTcps(int posicioTcps) {
-        this.posicioTcps = posicioTcps;
+    public void setPosicioTripulacio(int posicioTripulacio) {
+        this.posicioTripulacio = posicioTripulacio;
     }
 
     public Date getDataSortida() {
@@ -234,32 +218,26 @@ public class Vol {
      el valor de durada mitjançant el mètode adient d'aquesta classe.
      Retorn: cap
      */
-    public void modificarVol() throws ParseException {
+    public void modificarComponent() throws ParseException {
         int hora, minuts;
 
         System.out.println("\nEl codi del vol és: " + codi);
-        System.out.println("\nQuin és el nou codi del vol?");
-        codi = DADES.next();
+        codi = (String)demanarDades("\nQuin és el nou codi del vol?",4);
 
         System.out.println("\nLa data de sortida del vol és: " + new SimpleDateFormat("dd-MM-yyyy").format(dataSortida));
-        System.out.println("\nQuina és la nova data de sortida del vol?: (dd-mm-yyyy)");
-        dataSortida = new SimpleDateFormat("dd-MM-yyyy").parse(DADES.next());
+        dataSortida = new SimpleDateFormat("dd-MM-yyyy").parse((String)demanarDades("\nQuina és la nova data de sortida del vol?: (dd-mm-yyyy)",2));
         System.out.println("\nLa data d'arribada del vol és: " + new SimpleDateFormat("dd-MM-yyyy").format(dataArribada));
-        System.out.println("\nQuina és la nova data d'arribada del vol?: (dd-mm-yyyy)");
-        dataArribada = new SimpleDateFormat("dd-MM-yyyy").parse(DADES.next());
+        dataArribada = new SimpleDateFormat("dd-MM-yyyy").parse((String)demanarDades("\nQuina és la nova data d'arribada del vol?: (dd-mm-yyyy)",2));
 
         System.out.println("\nL'hora de sortida del vol és: " + horaSortida.getHour() + ":" + horaSortida.getMinute());
-        System.out.println("\nQuina és la nova hora de sortida del vol?");
-        hora = DADES.nextInt();
-        System.out.println("\nQuins són els nous minuts de la hora de sortida del vol?");
-        minuts = DADES.nextInt();
+        hora = (int)demanarDades("\nQuina és la nova hora de sortida del vol?",1);
+        minuts = (int)demanarDades("\nQuins són els nous minuts de la hora de sortida del vol?",1);
         horaSortida = LocalTime.of(hora, minuts);
 
         System.out.println("\nL'hora d'arribada del vol és: " + horaArribada.getHour() + ":" + horaArribada.getMinute());
-        System.out.println("\nQuina és la nova hora d'arribada del vol?");
-        hora = DADES.nextInt();
+        hora = (int)demanarDades("\nQuina és la nova hora d'arribada del vol?",1);
         System.out.println("\nQuins són els nous minuts de l'hora d'arribada del vol?");
-        minuts = DADES.nextInt();
+        minuts = (int)demanarDades("\nQuins són els nous minuts de l'hora d'arribada del vol?",1);
         horaSortida = LocalTime.of(hora, minuts);
     }
 
@@ -287,44 +265,35 @@ public class Vol {
      Retorn: cap
      */
     public void afegirTripulantCabina(TripulantCabina tripulantCabina) {
-        tripulacioCabina[posicioTripulacioCabina] = tripulantCabina;
-        posicioTripulacioCabina++;
+        if(tripulantCabina instanceof TCP){
+        } else {
+            
+        }
+        tripulacio[posicioTripulacio] = tripulantCabina;
+        posicioTripulacio++;
     }
 
-    /*
-     Paràmetres: TCP
-     Accions:
-     - afegeix el TCP passat per paràmetre al vector tcps en la primera posició buida 
-     del vector i actualitza la posició del vector tcps.
-     Retorn: cap
-     */
-    public void afegirTCP(TCP tcp) {
-        tcps[posicioTcps] = tcp;
-        posicioTcps++;
-    }
 
-    public void mostrarVol() {
+
+    public void mostrarComponent() {
         System.out.println("\nLes dades del vol amb codi " + codi + " són:");
 
         System.out.println("\nRuta: ");
-        switch (tipusRuta) {
-            case 1:
+        if(ruta != null){
+            if(ruta instanceof RutaNacional){
                 ((RutaNacional) ruta).mostrarRutaNacional();
-                break;
-            case 2:
+            }else if(ruta instanceof RutaInternacional){
                 ((RutaInternacional) ruta).mostrarRutaInternacional();
-                break;
-            case 3:
+            }else if (ruta instanceof RutaIntercontinental){
                 ((RutaIntercontinental) ruta).mostrarRutaIntercontinental();
-                break;
-            case 4:
+            }else if(ruta instanceof RutaTransoceanica){
                 ((RutaTransoceanica) ruta).mostrarRutaTransoceanica();
-                break;
+            }
         }
 
         System.out.println("\nAvio: ");
         if (avio != null) {
-            avio.mostrarAvio();
+            avio.mostrarComponent();
         }
 
         System.out.println("\nData de sortida: " + new SimpleDateFormat("dd-MM-yyyy").format(dataSortida));
@@ -333,16 +302,9 @@ public class Vol {
         System.out.println("\nHores d'arribada: " + horaArribada.getHour() + ":" + horaArribada.getMinute());
 
         System.out.println("\nLa tripulació de cabina és:");
-        for (int i = 0; i < posicioTripulacioCabina; i++) {
-            if (tripulacioCabina[i] != null) {
-                tripulacioCabina[i].mostrarTripulantCabina();
-            }
-        }
-
-        System.out.println("\nLa tripulació de cabina de passatgers és:");
-        for (int i = 0; i < posicioTcps; i++) {
-            if (tcps[i] != null) {
-                tcps[i].mostrarTCP();
+        for (int i = 0; i < posicioTripulacio; i++) {
+            if (tripulacio[i] != null) {
+                tripulacio[i].mostrarComponent();
             }
         }
 
