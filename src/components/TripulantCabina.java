@@ -2,20 +2,15 @@
  * Un tripulant de cabina es defineix pel seu passaport, nom, edat, data d’alta 
  * en la companyia, hores que porta de vol, rang i barres
  */
-package components;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
+package components;
 
 /**
  *
  * @author root
  */
+
 public class TripulantCabina extends Tripulant {
-
-    private final static Scanner DADES = new Scanner(System.in);
-
 
     private int horesVol;
     private String rang;

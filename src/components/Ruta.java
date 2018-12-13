@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package components;
 
-import java.util.Scanner;
+package components;
 
 /**
  *
  * @author Adrian
  */
 public abstract class Ruta implements Component {
-    
-    private final static Scanner DADES = new Scanner(System.in);
     
     private String codi;
     private String aeroportDes;

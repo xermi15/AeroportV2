@@ -8,16 +8,13 @@ package components;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  *
  * @author Xavi
  */
 public abstract class Tripulant implements Component {
-    
-    private final static Scanner DADES = new Scanner(System.in);
-    
+        
     private String passaport;
     private String nom;
     private int edat;
