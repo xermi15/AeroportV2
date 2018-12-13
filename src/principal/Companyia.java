@@ -150,8 +150,8 @@ public class Companyia implements Component {
                 }
                 for (int i = 0; i < posicioComponents && !trobat; i++) {
                     if (components[i] instanceof Tripulant) {
-                        Tripulant tripu = (Tripulant) components[i];
-                        if (tripu.getPassaport().equals(id)) {
+                        Tripulant tripulant = (Tripulant) components[i];
+                        if (tripulant.getPassaport().equals(id)) {
                             pos = i;
                             trobat = true;
                         }
