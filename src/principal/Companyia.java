@@ -14,6 +14,7 @@ import components.RutaNacional;
 import components.RutaTransoceanica;
 import components.TCP;
 import components.TripulantCabina;
+import components.Tripulant;
 import java.text.ParseException;
 
 /**
@@ -417,10 +418,10 @@ public class Companyia implements Component {
             pos = seleccionarComponent(3, null);
             if (components[pos] instanceof TripulantCabina) {
                 TripulantCabina tripulantCabina = (TripulantCabina) components[pos];
-                volSel.afegirTripulantCabina(tripulantCabina);
+                volSel.afegirTripulant(tripulantCabina);
             } else if (components[pos] instanceof TCP) {
                 TCP tcp = (TCP) components[pos];
-                volSel.afegirTCP(tcp);
+                volSel.afegirTripulant(tcp);
             } else {
                 System.out.println("\nNo existeix aquest tripulant....");
             }
